@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Age Calculator</title>
+<link rel="stylesheet" href="styles.css">
+</head>
+<!-- adding internal css -->
+<style>
+    body {
+  font-family: Arial, sans-serif;
+  background-color: aquamarine;
+  
+}
+
+.container {
+  margin: 50px auto;
+  text-align: center;
+  margin: auto;
+  margin-top: 300px;
+}
+
+input[type="date"] {
+  padding: 8px;
+  margin-right: 10px;
+}
+
+button {
+  padding: 8px 20px;
+  background-color: #003cff;
+  color: white;
+  border: 2px solid black;
+  box-shadow: #1b2133;
+  cursor: pointer;
+}
+
+button:hover {
+  background-color: #00aab3;
+}
+
+.container h2 {
+  font-size:60px;
+}
+</style>
+<body>
+<!-- container for form of calculator -->
+<div class="container">
+  <h2>Age Calculator</h2>
+  <label for="dob">Date of Birth:</label>
+  <input type="date" id="dob">
+  <!-- calculate age button to perfom onclick function -->
+  <button onclick="calculateAge()">Calculate Age</button>
+  <p id="result"></p>
+</div>
+
+<!-- javascript code  -->
+<script>
+  // create function to calculate age 
+    function calculateAge() {
+  var dobInput = document.getElementById("dob").value;
+  
+  // Convert input to date object
+  var dob = new Date(dobInput);
+  
+  // Get current date
+  var currentDate = new Date();
+  
+  // Calculate age
+  var age = currentDate.getFullYear() - dob.getFullYear();
+  
+  // Check if birthday has occurred this year
+  if (currentDate.getMonth() < dob.getMonth() || 
+      (currentDate.getMonth() === dob.getMonth() && currentDate.getDate() < dob.getDate())) {
+    age--;
+  }
+  
+  // Display result using Dom method
+  document.getElementById("result").innerHTML = "Your age is: " + age;
+}
+
+</script>
+
+</body>
+</html>
